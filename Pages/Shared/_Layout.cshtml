@@ -19,33 +19,39 @@
             <ul class="Nav_right">
                 <div class="Nav_menu">
                     <li>
-                        <button class="Nav_buttons">
-                            <a asp-area="" asp-page="/Index">Home</a>
-                        </button>
+                        <a asp-area="" asp-page="/Index">
+                            <button class="Nav_buttons">
+                                Home
+                            </button>
+                        </a>
                     </li>
                     <li>
-                        <button class="Nav_buttons">
-                            <a asp-area="" asp-page="/OverOns">Over ons</a>
-                        </button>
+                        <a asp-area="" asp-page="/OverOns">
+                            <button class="Nav_buttons">
+                                Over ons
+                            </button>
+                        </a>
                     </li>
                     <li>
-                        <button class="Nav_buttons">
-                            <a asp-area="" asp-page="/Download">Download</a>
-                        </button>
+                        <a asp-area="" asp-page="/Download">
+                            <button class="Nav_buttons">
+                                Download
+                            </button>
+                        </a>
                     </li>
                 </div>
             </ul>    
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - inNLburgering - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2022 - inNLburgering - <a class="Privacy_button" asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
 
