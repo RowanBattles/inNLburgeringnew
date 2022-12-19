@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4oyTlahJd5Y5DpifAHlItaFnrFdujF3ommzcSgoZyjU=",
+  "Hash": "MKFWrDcQq5D8/9wSchu/XmUuSVkpjJV8wvWy1Yz4W60=",
   "Source": "MyWebApp",
   "BasePath": "_content/MyWebApp",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\MyWebApp.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\css\\nicepage.css",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "css/nicepage.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\nicepage.css"
+    },
+    {
       "Identity": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\css\\site.css",
       "SourceId": "MyWebApp",
       "SourceType": "Discovered",
@@ -68,6 +85,23 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
+      "Identity": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\css\\site2.css",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "css/site2.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\site2.css"
+    },
+    {
       "Identity": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\favicon.ico",
       "SourceId": "MyWebApp",
       "SourceType": "Discovered",
@@ -83,6 +117,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\js\\jquery.js",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "js/jquery.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery.js"
+    },
+    {
+      "Identity": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\js\\nicepage.js",
+      "SourceId": "MyWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\",
+      "BasePath": "_content/MyWebApp",
+      "RelativePath": "js/nicepage.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\nicepage.js"
     },
     {
       "Identity": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\js\\site.js",

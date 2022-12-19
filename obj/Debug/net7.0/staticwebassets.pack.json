@@ -5,12 +5,28 @@
       "PackagePath": "staticwebassets\\MyWebApp.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\css\\nicepage.css",
+      "PackagePath": "staticwebassets\\css\\nicepage.css"
+    },
+    {
       "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\css\\site2.css",
+      "PackagePath": "staticwebassets\\css\\site2.css"
+    },
+    {
       "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\js\\jquery.js",
+      "PackagePath": "staticwebassets\\js\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\js\\nicepage.js",
+      "PackagePath": "staticwebassets\\js\\nicepage.js"
     },
     {
       "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\js\\site.js",
