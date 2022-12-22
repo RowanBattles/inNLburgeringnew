@@ -13,10 +13,6 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\css\\site2.css",
-      "PackagePath": "staticwebassets\\css\\site2.css"
-    },
-    {
       "Id": "C:\\Users\\rowan\\Desktop\\tools\\School\\Proftaak\\inNLburgeren\\Website\\MyWebApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },

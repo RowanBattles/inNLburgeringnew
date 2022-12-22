@@ -1,0 +1,191 @@
+@page 
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Evenementen";
+}
+
+
+<div class="Section-map" style="position: relative;">
+    <div class="Filterbox">
+        <form id="Mapfilter">
+            <input id="pac-input" class="Searchbar" type="text" placeholder="Zoek uw woonplaats of postcode">
+        </form>
+    </div>
+    <div id="map" style="width:100%; height:600px"></div>
+</div>
+<div style="height: 60px;"></div>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUm8J7QColZ6jfD4LFynMO8duwYXE8zek&callback=initMap&libraries=places&v=weekly"></script>
+
+
+
+
+<script>
+    map = null;
+    poly = null;
+
+    function initMap() 
+    {
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        map = new google.maps.Map(document.getElementById('map'), 
+        {
+            zoom: 8,
+            center: { lat: 52, lng: 5.7 },
+            disableDefaultUI: true, // disable the default controls
+            streetViewControl: true, // add back streetView control
+            zoomControl: true, // add back the zoom control
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+        directionsDisplay.setMap(map);
+        poly = new google.maps.Polyline
+        ({
+            strokeColor: '#000000',
+            strokeOpacity: 1.0,
+            strokeWeight: 3
+        });
+        poly.setMap(map);
+
+        const input = document.getElementById("pac-input");
+        const searchBox = new google.maps.places.SearchBox(input);
+
+        let markers = [];
+
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener("places_changed", () => {
+            const places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+            return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach((marker) => {
+            marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            const bounds = new google.maps.LatLngBounds();
+
+            places.forEach((place) => {
+            if (!place.geometry || !place.geometry.location) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+
+            const icon = {
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25),
+            };
+
+            // Create a marker for each place.
+            markers.push(
+                new google.maps.Marker({
+                map,
+                icon,
+                title: place.name,
+                position: place.geometry.location,
+                })
+            );
+            if (place.geometry.viewport) {
+                // Only geocodes have viewport.
+                bounds.union(place.geometry.viewport);
+            } else {
+                bounds.extend(place.geometry.location);
+            }
+            });
+            map.fitBounds(bounds);
+        });
+
+        const predeterminedLocations = 
+        [
+            { lat: 52.37, lng: 4.90 },
+            { lat: 52.36, lng: 4.91 },
+            { lat: 52.38, lng: 4.92 }
+        ];
+
+        // Loop through the array of locations
+        predeterminedLocations.forEach(location => 
+        {
+        // Create a marker for each location
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: 'Predetermined Location',
+                icon: {
+                url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                }
+            });
+        });
+
+    }
+
+    function searchLibraries(location) 
+    {
+        var request = 
+        {
+            query: 'library',
+            location: location,
+            radius: '5000',
+        };
+
+        var service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+    }
+
+    function callback(results, status) 
+    {
+        if (status == google.maps.places.PlacesServiceStatus.OK) 
+        {
+            console.log(results);
+        }
+    }
+
+
+</script>
+
+
+
+<script>
+/*    var map;
+    function initMap() 
+    {
+        var map = new google.maps.Map(document.getElementById('map'), 
+        {
+            center: {lat: 52, lng: 5.7},
+            zoom: 8
+            //disableDefaultUI: true, // disable the default controls
+            //streetViewControl: true, // add back streetView control
+            //zoomControl: true, // add back the zoom control
+            //mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    }
+
+    function searchLibraries(location) 
+    {
+        var request = 
+        {
+            query: 'library',
+            location: location,
+            radius: '5000',
+        };
+
+        var service = new google.maps.places.PlacesService(map);
+        service.textSearch(request, callback);
+    }
+
+    function callback(results, status) 
+    {
+        if (status == google.maps.places.PlacesServiceStatus.OK) 
+        {
+            console.log(results);
+        }
+    }
+
+</script>
+

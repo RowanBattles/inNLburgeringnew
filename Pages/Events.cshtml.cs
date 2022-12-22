@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace MyWebApp.Pages;
 
-public class DownloadModel : PageModel
+public class Eventmodel : PageModel
 {
-    private readonly ILogger<DownloadModel> _logger;
+    private readonly ILogger<Eventmodel> _logger;
 
-    public DownloadModel(ILogger<DownloadModel> logger)
+    public Eventmodel(ILogger<Eventmodel> logger)
     {
         _logger = logger;
     }
@@ -16,4 +16,3 @@ public class DownloadModel : PageModel
     {
     }
 }
-

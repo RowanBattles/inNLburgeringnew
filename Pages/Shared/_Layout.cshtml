@@ -16,7 +16,7 @@
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"/>
 </head>
 <body>
-    <header>
+    <header style="z-index: 100;">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="navigationbar">
             <div class="Nav_left">
                  <a asp-area="" asp-page="/Index">
@@ -46,6 +46,13 @@
                             </button>
                         </a>
                     </li>
+                    <li>
+                        <a asp-area="" asp-page="/Events">
+                            <button class="Nav_buttons">
+                                Events
+                            </button>
+                        </a>
+                    </li>
                 </div>
             </ul>    
         </nav>
@@ -56,7 +63,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="z-index: 100;">
         <div class="container">
             &copy; 2022 - inNLburgering - <a class="Privacy_button" asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
