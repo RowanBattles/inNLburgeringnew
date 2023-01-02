@@ -22,6 +22,40 @@ html {
     padding: 16px 32px;
 }
 
+#Markercontent {
+    background-color: white;
+    margin-top: 30px;
+    padding: 1rem;
+}
+
+#Markercontent h4 {
+    color: #009;
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    font-family: Montserrat,times;
+}
+
+.Linkje{
+    color: #009;
+    cursor: pointer;
+}
+
+.Linkje:hover{
+    text-decoration: underline;
+}
+
+
+p {
+    margin-bottom: 1rem;
+    font-size: inherit;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: Montserrat,times;
+}
+
 .Textcontainer {
     background-color: #3366ff;
     border-color: black;
@@ -95,6 +129,22 @@ html {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+}
+
+.Websiteknop {
+    background-color: #009;
+    color: white;
+    display: inline-block;
+    margin: .5rem 0;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0.3rem 1rem;
+    cursor: pointer;
+}
+
+.Websiteknop:hover {
+    background-color: #6b9cd2;
+    text-decoration: none;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {

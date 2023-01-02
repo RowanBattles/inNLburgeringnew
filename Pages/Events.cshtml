@@ -7,15 +7,18 @@
 
 <div class="Section-map" style="position: relative;">
     <div class="Filterbox">
-        <form id="Mapfilter">
+        <form id="Mapfilter">   
             <input id="pac-input" class="Searchbar" type="text" placeholder="Zoek uw woonplaats of postcode">
         </form>
+        <div id="Markercontent">
+            
+        </div>
     </div>
     <div id="map" style="width:100%; height:600px"></div>
 </div>
 <div style="height: 60px;"></div>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUm8J7QColZ6jfD4LFynMO8duwYXE8zek&callback=initMap&libraries=places&v=weekly"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUm8J7QColZ6jfD4LFynMO8duwYXE8zek&callback=initMap&libraries=places,geometry"></script>
 
 
 
@@ -32,10 +35,19 @@
         {
             zoom: 8,
             center: { lat: 52, lng: 5.7 },
-            disableDefaultUI: true, // disable the default controls
-            streetViewControl: true, // add back streetView control
-            zoomControl: true, // add back the zoom control
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            disableDefaultUI: true, 
+            streetViewControl: false, 
+            zoomControl: true, 
+            minZoom: 8, 
+            draggableCursor: '',
+            //maxZoom: 12, 
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            restriction: {
+                latLngBounds: new google.maps.LatLngBounds(
+                    new google.maps.LatLng(49.75, 0),  // South West corner
+                    new google.maps.LatLng(55, 11)   // North East corner
+                )
+            }
         });
         directionsDisplay.setMap(map);
         poly = new google.maps.Polyline
@@ -46,96 +58,217 @@
         });
         poly.setMap(map);
 
+        //voorbestemde locaties (bibliotheken)
+        const predeterminedLocations = 
+        [
+            { lat: 51.56112880276791, lng: 5.085611590650367, id: "Tilburg" },
+            { lat: 52.375882906306586, lng: 4.90837730121299, id: "Amsterdam" },
+            { lat: 52.07747834109326, lng: 4.3161503453798336, id: "DenHaag" },
+            { lat: 50.8478851675215, lng: 5.701084946524922, id: "Maastricht" },
+            { lat: 51.43954112987825, lng: 5.474766208040955, id: "Eindhoven" },
+            { lat: 52.09353991698947, lng: 5.118207487191431, id: "Utrecht" },  
+            { lat: 53.24317251308349, lng: 6.529213192695548, id: "Groningen" },  
+            { lat: 52.50860263467102, lng: 6.093302426612297, id: "Zwolle" },
+            { lat: 51.980553938943, lng: 5.948854014704658, id: "Arnhem" }     
+        ];
+
+        const locationInfo = {
+            Eindhoven: {
+                title: 'De Witte Dame',
+                content: 'Emmasingel 12',
+                postcode: '5611 AZ Eindhoven',
+                telefoon: '+31402604260',
+                email: 'klantenservice@bibliotheekeindhoven.nl',
+                website: 'https://eindhoven.op-shop.nl/'
+            },
+            Tilburg: {
+                title: 'De Bibliotheek LocHal',
+                content: 'Burgemeester Brokxlaan 1000',
+                postcode: '5041 SG Tilburg',
+                telefoon: '+31134648500',
+                email: 'klantenservice@bibliotheekmb.nl',
+                website: 'https://www.bibliotheekmb.nl/agenda/21-03-mrt/belastingspreekuur-bibliotheek-lochal.html'
+            },
+            Amsterdam: {
+                title: 'OBA Oosterdok',
+                content: 'Oosterdokskade 143',
+                postcode: '1011 DL Amsterdam',
+                telefoon: '+31205230900',
+                email: 'klantenservice@oba.nl',
+                website: 'https://www.oba.nl/agenda/oosterdok/spreekuurtaalinformatiepunt.html'
+            },
+            DenHaag: {
+                title: 'Centrale Bibliotheek',
+                content: 'Spui 68',
+                postcode: '2511 BT Den Haag',
+                telefoon: '+31703534455',
+                email: 'klantenservice@bibliotheekdenhaag.nl',
+                website: 'https://www.bibliotheekdenhaag.nl/leren/cursussen-en-workshops.html'
+            },    
+            Maastricht: {
+                title: 'Stadsbibliotheek Maastricht',
+                content: 'Centre Ceramique, Avenue Ceramique 50',
+                postcode: '6221 KV Maastricht',
+                telefoon: '+31433505600',
+                email: 'klantenservice@maastricht.nl',
+                website: 'https://tentoonstelling.centreceramique.nl/informatiepunt-digitale-overheid'
+            },
+            Arnhem: {
+                title: 'De Bibliotheek Presikhaaf',
+                content: 'Laan van Presikhaaf 7',
+                postcode: '6826 HA Arnhem',
+                telefoon: '+31263543111',
+                email: 'info@rozet.nl',
+                website: 'https://arnhem.hetinformatiepunt.nl/'
+            },
+            Utrecht: {
+                title: 'Bibliotheek Neude',
+                content: 'Neude 11',
+                postcode: '3512 AE Utrecht',
+                telefoon: '+31302861800',
+                email: 'klantenservice@bibliotheekutrecht.nl',
+                website: 'https://www.bibliotheekutrecht.nl/agenda/volwassenen/alle-activiteiten-volwassenen.filter.html?s=metatags-activity-type%3Aworkshop-en-cursus'
+            },
+            Zwolle: {
+                title: 'Stadkamer Centrum',
+                content: 'Zeven Alleetjes 1a',
+                postcode: '8011 CV Zwolle',
+                telefoon: '+31384217278',
+                email: '',
+                contact: 'https://stadkamer.nl/contact',
+                website: 'https://www.alleszelf.nl/diensten-voor-ouderen/informatie-advies/stadkamer-zwolle-digitaal-spreekuur'
+            },
+            Groningen: {
+                title: 'Biblionet Groningen',
+                content: 'De Mudden 18',
+                postcode: '9747 AW Groningen',
+                telefoon: '+31885061900',
+                email: 'klantenservice@biblionetgroningen.nl',
+                website: 'https://www.biblionetgroningen.nl/onderwijs/cursussen-en-trainingen/workshopsvo.html'
+            },
+        };
+
+        document.getElementById('Markercontent').style.display = 'none';
+
+        let currentMarker;
+
+        //marker toevoegen
+        predeterminedLocations.forEach(location => 
+        {
+            const marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: 'Bibliotheek',
+                icon: {
+                url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                }
+            });
+
+            marker.addListener('click', () => {
+                if (currentMarker) {
+                    currentMarker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+                }
+
+                marker.setIcon({
+                    url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                });
+                currentMarker = marker;
+
+                map.setCenter(marker.getPosition());
+                map.setZoom(12);
+                document.getElementById('Markercontent').style.display = 'block';
+                document.getElementById('Markercontent').innerHTML = '';
+                if (location.id === 'Zwolle') {
+                    document.getElementById('Markercontent').innerHTML = `
+                    <h4>${locationInfo[location.id].title}</h4>
+                    <p>${locationInfo[location.id].content}</p>
+                    <p>${locationInfo[location.id].postcode}</p>
+                    <p class="Linkje"><a href="tel:${locationInfo[location.id].telefoon}">${locationInfo[location.id].telefoon}</a></p>
+                    <p class="Linkje"><a href="mailto:${locationInfo[location.id].email}">${locationInfo[location.id].email}</a></p>
+                    <a class="Websiteknop" href="${locationInfo[location.id].contact}">Contact</a>
+                    <a class="Websiteknop" href="${locationInfo[location.id].website}">Bekijk evenementen</a>
+                `;
+                }
+                else {
+                    document.getElementById('Markercontent').innerHTML = `
+                    <h4>${locationInfo[location.id].title}</h4>
+                    <p>${locationInfo[location.id].content}</p>
+                    <p>${locationInfo[location.id].postcode}</p>
+                    <p class="Linkje"><a href="tel:${locationInfo[location.id].telefoon}">${locationInfo[location.id].telefoon}</a></p>
+                    <p class="Linkje"><a href="mailto:${locationInfo[location.id].email}">${locationInfo[location.id].email}</a></p>
+                    <a class="Websiteknop" href="${locationInfo[location.id].website}">Bekijk evenementen</a>
+                `;  
+                }
+       
+            });
+        });
+
+         
+
         const input = document.getElementById("pac-input");
         const searchBox = new google.maps.places.SearchBox(input);
 
         let markers = [];
 
-        // Listen for the event fired when the user selects a prediction and retrieve
-        // more details for that place.
-        searchBox.addListener("places_changed", () => {
-            const places = searchBox.getPlaces();
+        //searchbox toevoegen
+        // Bind the searchBox's `places_changed` event to a function
+        searchBox.addListener('places_changed', function() {
+        // Get the selected place
+            const place = searchBox.getPlaces()[0];
 
-            if (places.length == 0) {
-            return;
-            }
+            if (place.geometry) {
+                let minDistance = Number.MAX_VALUE;
+                let closestLocation;
+                predeterminedLocations.forEach(location => {
+                    const distance = google.maps.geometry.spherical.computeDistanceBetween(location, place.geometry.location);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestLocation = location;
+                    }
+                });
 
-            // Clear out the old markers.
-            markers.forEach((marker) => {
-            marker.setMap(null);
-            });
-            markers = [];
+                markers.forEach(marker => marker.setMap(null));
+                markers = [];
 
-            // For each place, get the icon, name and location.
-            const bounds = new google.maps.LatLngBounds();
-
-            places.forEach((place) => {
-            if (!place.geometry || !place.geometry.location) {
-                console.log("Returned place contains no geometry");
-                return;
-            }
-
-            const icon = {
-                url: place.icon,
-                size: new google.maps.Size(71, 71),
-                origin: new google.maps.Point(0, 0),
-                anchor: new google.maps.Point(17, 34),
-                scaledSize: new google.maps.Size(25, 25),
-            };
-
-            // Create a marker for each place.
-            markers.push(
-                new google.maps.Marker({
-                map,
-                icon,
-                title: place.name,
-                position: place.geometry.location,
-                })
-            );
-            if (place.geometry.viewport) {
-                // Only geocodes have viewport.
-                bounds.union(place.geometry.viewport);
-            } else {
-                bounds.extend(place.geometry.location);
-            }
-            });
-            map.fitBounds(bounds);
-        });
-
-        const predeterminedLocations = 
-        [
-            { lat: 52.37, lng: 4.90 },
-            { lat: 52.36, lng: 4.91 },
-            { lat: 52.38, lng: 4.92 }
-        ];
-
-        // Loop through the array of locations
-        predeterminedLocations.forEach(location => 
-        {
-        // Create a marker for each location
-            const marker = new google.maps.Marker({
-                position: location,
-                map: map,
-                title: 'Predetermined Location',
-                icon: {
-                url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
+                const marker = new google.maps.Marker({
+                    position: closestLocation,
+                    map: map,
+                    icon: {
+                        url: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
                 }
-            });
+                });
+
+                markers.push(marker);
+                map.panTo(closestLocation);
+                map.setZoom(12);
+
+                document.getElementById('Markercontent').style.display = 'block';
+                document.getElementById('Markercontent').innerHTML = '';
+                if (closestLocation.id === 'Zwolle') {
+                    document.getElementById('Markercontent').innerHTML = `
+                    <h4>${locationInfo[closestLocation.id].title}</h4>
+                    <p>${locationInfo[closestLocation.id].content}</p>
+                    <p>${locationInfo[closestLocation.id].postcode}</p>
+                    <p class="Linkje"><a href="tel:${locationInfo[closestLocation.id].telefoon}">${locationInfo[closestLocation.id].telefoon}</a></p>
+                    <p class="Linkje"><a href="mailto:${locationInfo[closestLocation.id].email}">${locationInfo[closestLocation.id].email}</a></p>
+                    <a class="Websiteknop" href="${locationInfo[closestLocation.id].contact}">Contact</a>
+                    <a class="Websiteknop" href="${locationInfo[closestLocation.id].website}">Bekijk evenementen</a>
+                `; 
+                }
+                else {
+                    document.getElementById('Markercontent').innerHTML = `
+                    <h4>${locationInfo[closestLocation.id].title}</h4>
+                    <p>${locationInfo[closestLocation.id].content}</p>
+                    <p>${locationInfo[closestLocation.id].postcode}</p>
+                    <p class="Linkje"><a href="tel:${locationInfo[closestLocation.id].telefoon}">${locationInfo[closestLocation.id].telefoon}</a></p>
+                    <p class="Linkje"><a href="mailto:${locationInfo[closestLocation.id].email}">${locationInfo[closestLocation.id].email}</a></p>
+                    <a class="Websiteknop" href="${locationInfo[closestLocation.id].website}">Bekijk evenementen</a>
+                `; 
+                }
+
+                 
+            }   
         });
-
-    }
-
-    function searchLibraries(location) 
-    {
-        var request = 
-        {
-            query: 'library',
-            location: location,
-            radius: '5000',
-        };
-
-        var service = new google.maps.places.PlacesService(map);
-        service.textSearch(request, callback);
     }
 
     function callback(results, status) 
@@ -145,47 +278,4 @@
             console.log(results);
         }
     }
-
-
 </script>
-
-
-
-<script>
-/*    var map;
-    function initMap() 
-    {
-        var map = new google.maps.Map(document.getElementById('map'), 
-        {
-            center: {lat: 52, lng: 5.7},
-            zoom: 8
-            //disableDefaultUI: true, // disable the default controls
-            //streetViewControl: true, // add back streetView control
-            //zoomControl: true, // add back the zoom control
-            //mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-    }
-
-    function searchLibraries(location) 
-    {
-        var request = 
-        {
-            query: 'library',
-            location: location,
-            radius: '5000',
-        };
-
-        var service = new google.maps.places.PlacesService(map);
-        service.textSearch(request, callback);
-    }
-
-    function callback(results, status) 
-    {
-        if (status == google.maps.places.PlacesServiceStatus.OK) 
-        {
-            console.log(results);
-        }
-    }
-
-</script>
-
