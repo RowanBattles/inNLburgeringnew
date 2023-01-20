@@ -56,6 +56,10 @@ p {
     font-family: Montserrat,times;
 }
 
+#ContainerDownloadClasses {
+    text-align: center;
+  }
+
 .Textcontainer {
     background-color: #3366ff;
     border-color: black;
@@ -71,6 +75,7 @@ p {
 .Titel {
     display: flex;
     justify-content: center;
+    text-align: center;
     margin-bottom: 16px;
     color: #ff7200;
 }
@@ -79,6 +84,23 @@ p {
     color: white;
     line-height: 30px;
     font-weight: 500;
+    font-family: Roboto,sans-serif
+}
+
+#DownloadTekst {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    vertical-align: center;
+    justify-self: center;
+    align-items: center;
+    place-items: center;
+    text-align: center;
+}
+
+#Footer {
+    background-color: white;
+    max-width: 100%;
 }
 
 .Fotocontainer {
@@ -165,7 +187,7 @@ body {
     height: auto;
     min-height: 100px;
     max-height: 112px;
-    background-color: #258cfb !important;
+    background-color: #3366ff !important;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -686,4 +708,9 @@ ul {
     .u-section-15 .u-layout-cell-45 {
         min-height: 283px;
     }
+}
+.centre {
+    justify-content: center;
+    text-align: center;
+
 }

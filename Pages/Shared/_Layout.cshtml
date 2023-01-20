@@ -27,20 +27,20 @@
                 <div class="Nav_menu">
                     <li>
                         <a asp-area="" asp-page="/Index">
-                            <button class="Nav_buttons">
+                            <button class="Nav_buttons" id="HomeButton">
                                 Home
                             </button>
                         </a>
                     </li>
                     <li>
                         <a asp-area="" asp-page="/OverOns">
-                            <button class="Nav_buttons">
+                            <button class="Nav_buttons" id="OverOnsButton">
                                 Over ons
                             </button>
                         </a>
                     </li>
                     <li>
-                        <a asp-area="" asp-page="/Download">
+                        <a asp-area="" asp-page="/Download" id="DownloadButton">
                             <button class="Nav_buttons">
                                 Download
                             </button>
@@ -48,7 +48,7 @@
                     </li>
                     <li>
                         <a asp-area="" asp-page="/Events">
-                            <button class="Nav_buttons">
+                            <button class="Nav_buttons" id="EventsButton">
                                 Events
                             </button>
                         </a>
@@ -64,7 +64,7 @@
     </div>
 
     <footer class="border-top footer text-muted" style="z-index: 100;">
-        <div class="container">
+        <div class="container" id="Footer">
             &copy; 2022 - inNLburgering - <a class="Privacy_button" asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
