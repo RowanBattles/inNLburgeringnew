@@ -29,3 +29,11 @@ C:\Users\rowan\Desktop\tools\School\Proftaak\inNLburgeren\Website\MyWebApp\obj\D
 C:\Users\rowan\Desktop\tools\School\Proftaak\inNLburgeren\Website\MyWebApp\obj\Debug\net7.0\MyWebApp.pdb
 C:\Users\rowan\Desktop\tools\School\Proftaak\inNLburgeren\Website\MyWebApp\obj\Debug\net7.0\MyWebApp.genruntimeconfig.cache
 C:\Users\rowan\Desktop\tools\School\Proftaak\inNLburgeren\Website\MyWebApp\obj\Debug\net7.0\ref\MyWebApp.dll
+C:\ubutnudidfhsdiuds\appsettings.Development.json
+C:\ubutnudidfhsdiuds\appsettings.json
+C:\ubutnudidfhsdiuds\MyWebApp.staticwebassets.runtime.json
+C:\ubutnudidfhsdiuds\MyWebApp.exe
+C:\ubutnudidfhsdiuds\MyWebApp.deps.json
+C:\ubutnudidfhsdiuds\MyWebApp.runtimeconfig.json
+C:\ubutnudidfhsdiuds\MyWebApp.dll
+C:\ubutnudidfhsdiuds\MyWebApp.pdb
